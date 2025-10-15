@@ -29,7 +29,8 @@ const tweet = trycatchwrapper(async ()=>{
     // await twitterClient.v2.tweet('Hell is great');
 })
 
-const cronExp = '*/30 * * * * *'
+const cronExp = '0 0 9,15,21 * * *'
+
 const cronTweet = new CronJob(cronExp,tweet)
 cronTweet.start();
 
