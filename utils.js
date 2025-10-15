@@ -35,12 +35,12 @@ export const trycatchwrapper = (fn) => async (...args) =>{
         }
     }
 }
-const writelog = trycatchwrapper(async(errormsg)=>{
+export const writelog = trycatchwrapper(async(errormsg)=>{
     const __filename = fileURLToPath(import.meta.url)
     const __dirname = path.dirname(__filename)
     const logdir = path.join(__dirname,'logs')
     await fs.mkdir(logdir,{recursive:true})
-    const logfile = path.join(logdir,'error.log')
+    const logfile = path.join(logdir,'output.log')
     await fs.appendFile(logfile,`${timeStamp()}      ${errormsg}\n`,'utf-8')
 })
 

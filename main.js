@@ -1,9 +1,11 @@
 import { twitterClient } from './twitterClient.js';
-import { downloadImage, generateCaption, generateTopic, trycatchwrapper } from './utils.js';
+import { downloadImage, generateCaption, generateTopic, trycatchwrapper, writelog } from './utils.js';
 import { CronJob } from 'cron';
 import { getUnsplashImage } from './unsplash.js';
 
 const tweet = trycatchwrapper(async ()=>{
+    await writelog('-------------------- Execution Started')
+
 
     const topic = await generateTopic()
     if(!topic) throw Error(`Error getting topic ${topic}`)
@@ -26,6 +28,7 @@ const tweet = trycatchwrapper(async ()=>{
         }
     })
     // await twitterClient.v2.tweet('Hell is great');
+    await writelog('-------------------- Execution Completed Successfully')
 })
 
 const cronExp = '0 0 9,15,21 * * *'
