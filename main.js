@@ -1,4 +1,3 @@
-import chalk from 'chalk';
 import { twitterClient } from './twitterClient.js';
 import { downloadImage, generateCaption, generateTopic, trycatchwrapper } from './utils.js';
 import { CronJob } from 'cron';
